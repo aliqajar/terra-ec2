@@ -4,6 +4,13 @@ provider "aws" {
     region = "us-east-1"
 }
 
+
+variable "subnet_prefix" {
+  description = "cidr block for the subnet"
+
+}
+
+
 # 1. vpc
 resource "aws_vpc" "prod-vpc" {
     cidr_block = "10.0.0.0/16"
@@ -35,7 +42,6 @@ resource "aws_route_table" "prod-route-table" {
     Name = "prod"
   }
 }
-
 
 # 4. subnet
 resource "aws_subnet" "subnet-1" {
